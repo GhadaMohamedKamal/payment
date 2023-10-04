@@ -40,9 +40,9 @@ When we use only SQL fo creating database:(but i use hibernate to create databas
 
 ## SQL Queries:
 
-/*Different queries in sql in the task*/
-/*a. To get the merchant with the highest turnover in 2022:*/
-JOIN Payment_Transaction pt ON m.id = pt.merchant_Id
+## /*Different queries in sql in the task*/
+## /*a. To get the merchant with the highest turnover in 2022:*/
+## JOIN Payment_Transaction pt ON m.id = pt.merchant_Id
 WHERE YEAR(pt.transaction_Date) = 2022
 GROUP BY m.id, m.name
 ORDER BY turnover DESC
@@ -52,7 +52,7 @@ LIMIT 1;
 
 
 ## /*b. To check whether the merchant with the highest turnover is still active:*/
-SELECT m.active
+## SELECT m.active
 FROM Merchant m
 WHERE m.id = (
     SELECT m.id
@@ -68,7 +68,7 @@ WHERE m.id = (
 
 
 ## c. Top 5 customers active in 2022 but not in 2023:*/
-SELECT c.id, c.name, COUNT(pt.id) as transaction_count
+## SELECT c.id, c.name, COUNT(pt.id) as transaction_count
 FROM Customer c
 JOIN Payment_Transaction pt ON c.id = pt.customer_Id
 WHERE YEAR(pt.transaction_Date) = 2022 AND c.id NOT IN (
@@ -79,7 +79,7 @@ WHERE YEAR(pt.transaction_Date) = 2022 AND c.id NOT IN (
 GROUP BY c.id, c.name
 ORDER BY transaction_count DESC
 LIMIT 5;
-##Result:
+## Result:
 1,Ghada,6
 2,Mario,2
 
