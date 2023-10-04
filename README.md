@@ -2,7 +2,7 @@
 I create three tables - Customer, Merchant, and PaymentTransaction 
 
 
-# Components:
+## Components:
 Customer: Manages customer data .
 Merchant: Handles merchant details and validation.
 PaymentTransaction: Processes and tracks every transaction.
@@ -11,22 +11,22 @@ PaymentTransaction: Processes and tracks every transaction.
 When we use only SQL fo creating database:(but i use hibernate to create database using springboot model with annotation @Table)
 
 ## Here is the SQL Satatements :
-/*to create tables in sql statements*/
+## /*to create tables in sql statements*/
 
-CREATE TABLE Customer (
+## CREATE TABLE Customer (
     id INT PRIMARY KEY AUTO_INCREMENT,
     name VARCHAR(255),
     email VARCHAR(255) UNIQUE,
     dateOfRegistration DATE
 );
 
-CREATE TABLE Merchant (
+## CREATE TABLE Merchant (
     id INT PRIMARY KEY AUTO_INCREMENT,
     name VARCHAR(255),
     active BOOLEAN
 );
 
-CREATE TABLE PaymentTransaction (
+## CREATE TABLE PaymentTransaction (
     id INT PRIMARY KEY AUTO_INCREMENT,
     transactionDate DATE,
     grossAmount DECIMAL(10, 2),
