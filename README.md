@@ -39,7 +39,7 @@ When we use only SQL fo creating database:(but i use hibernate to create databas
 );
 
 ## SQL Queries:
-
+## all sql statements in a file DB.sql 
 ## /*Different queries in sql in the task*/
 ## /*a. To get the merchant with the highest turnover in 2022:*/
 JOIN Payment_Transaction pt ON m.id = pt.merchant_Id
