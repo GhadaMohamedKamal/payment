@@ -1,4 +1,16 @@
-# payment
+Database Design:
+I create three tables - Customer, Merchant, and PaymentTransaction 
+
+
+Components:
+Customer: Manages customer data .
+Merchant: Handles merchant details and validation.
+PaymentTransaction: Processes and tracks every transaction.
+
+
+When we use only SQL fo creating database:(but i use hibernate to create database using springboot model with annotation @Table)
+
+Here is the SQL Satatements :
 /*to create tables in sql statements*/
 
 CREATE TABLE Customer (
@@ -26,7 +38,9 @@ CREATE TABLE PaymentTransaction (
     FOREIGN KEY (merchantId) REFERENCES Merchant(id)
 );
 
-/*Different quesries in sql in the task*/
+SQL Queries:
+
+/*Different queries in sql in the task*/
 /*a. To get the merchant with the highest turnover in 2022:*/
 SELECT m.id, m.name, SUM(pt.grossAmount) as turnover
 FROM Merchant m
@@ -61,3 +75,69 @@ WHERE YEAR(pt.transactionDate) = 2022 AND c.id NOT IN (
 GROUP BY c.id, c.name
 ORDER BY transaction_count DESC
 LIMIT 5;
+
+
+How I did for implementation :
+
+1. Spring Boot Project Setup
+Use Spring Initializer (https://start.spring.io/) to create a new project with:
+
+Project Type: Maven
+Language: Java 17
+Dependencies: Spring Web, Spring Data JPA and for database (maria DB)
+Once downloaded,I extract the zip and open in Eclipse IDE.
+
+2. Define Entities
+Customer Entity , Merchant Entity , PaymentTransaction Entity
+For filling entries in DB , I do it manually in Heidi SQL or by query in Heidi SQL like this :
+-- Transactions for Ghada
+INSERT INTO payment_Transaction (transaction_Date, gross_Amount, VATRate, receipt_Id, customer_id, merchant_id) VALUES ('2022-01-10', 100.0, 0.19, 'R12345', 1, 1);
+INSERT INTO payment_Transaction (transaction_Date, gross_Amount, VATRate, receipt_Id, customer_id, merchant_id) VALUES ('2022-01-15', 50.0, 0.07, 'R12346', 1, 2);
+
+3. Defining Repositories
+For each entity,I define a repository interface
+
+4. Defining Services & Implement API Endpoints 
+ I assume that there are three services i included under MerchatService 
+5. API Controller 
+
+6. Test the controller endpoint by Postman
+
+1. Get Merchant By ID:
+
+GET http://localhost:8080/merchants/1
+
+Result in Postman:
+
+{
+    "name": "Merchant One",
+    "active": true
+}
+
+2. Get All Active Merchants:
+
+GET (http://localhost:8080/merchants/active)
+Result in Postman:
+[
+    {
+        "name": "Merchant One",
+        "active": true
+    },
+    {
+        "name": "Merchant Two",
+        "active": true
+    }
+]
+
+
+3. Get All Customers Without Transactions:
+
+GET http://localhost:8080/customers/no-transactions
+Result in Postman:
+[
+    {
+        "name": "Blanke ",
+        "email": "blanke@example.com",
+        "dateOfRegistration": "2022-06-15"
+    }
+]
