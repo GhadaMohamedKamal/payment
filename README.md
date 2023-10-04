@@ -2,7 +2,7 @@
 I create three tables - Customer, Merchant, and PaymentTransaction 
 
 
-#Components:
+# Components:
 Customer: Manages customer data .
 Merchant: Handles merchant details and validation.
 PaymentTransaction: Processes and tracks every transaction.
@@ -10,7 +10,7 @@ PaymentTransaction: Processes and tracks every transaction.
 
 When we use only SQL fo creating database:(but i use hibernate to create database using springboot model with annotation @Table)
 
-##Here is the SQL Satatements :
+## Here is the SQL Satatements :
 /*to create tables in sql statements*/
 
 CREATE TABLE Customer (
@@ -38,7 +38,7 @@ CREATE TABLE PaymentTransaction (
     FOREIGN KEY (merchantId) REFERENCES Merchant(id)
 );
 
-##SQL Queries:
+## SQL Queries:
 
 /*Different queries in sql in the task*/
 /*a. To get the merchant with the highest turnover in 2022:*/
@@ -47,12 +47,12 @@ WHERE YEAR(pt.transaction_Date) = 2022
 GROUP BY m.id, m.name
 ORDER BY turnover DESC
 LIMIT 1;
-## Test on Heidi :
-##Result :
+##  Test on Heidi :
+## Result :
 1,Merchant One,450
 
 
-##/*b. To check whether the merchant with the highest turnover is still active:*/
+## /*b. To check whether the merchant with the highest turnover is still active:*/
 SELECT m.active
 FROM Merchant m
 WHERE m.id = (
@@ -64,11 +64,11 @@ WHERE m.id = (
     ORDER BY SUM(pt.gross_Amount) DESC
     LIMIT 1
 );
-##Result on heidi:
+## Result on heidi:
 1,Active
 
 
-##c. Top 5 customers active in 2022 but not in 2023:*/
+## c. Top 5 customers active in 2022 but not in 2023:*/
 SELECT c.id, c.name, COUNT(pt.id) as transaction_count
 FROM Customer c
 JOIN Payment_Transaction pt ON c.id = pt.customer_Id
@@ -84,7 +84,7 @@ LIMIT 5;
 1,Ghada,6
 2,Mario,2
 
-##Implementation Details :
+## Implementation Details :
 
 1. Spring Boot Project Setup
 Use Spring Initializer (https://start.spring.io/) to create a new project with:
