@@ -47,9 +47,8 @@ WHERE YEAR(pt.transaction_Date) = 2022
 GROUP BY m.id, m.name
 ORDER BY turnover DESC
 LIMIT 1;
-##  Test on Heidi :
-## Result :
-1,Merchant One,450
+##  Test on Heidi Result :
+1,Me rchant One,450
 
 
 ## /*b. To check whether the merchant with the highest turnover is still active:*/
