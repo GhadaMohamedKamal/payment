@@ -1,8 +1,8 @@
-Database Design:
+##Database Design:
 I create three tables - Customer, Merchant, and PaymentTransaction 
 
 
-Components:
+#Components:
 Customer: Manages customer data .
 Merchant: Handles merchant details and validation.
 PaymentTransaction: Processes and tracks every transaction.
@@ -10,7 +10,7 @@ PaymentTransaction: Processes and tracks every transaction.
 
 When we use only SQL fo creating database:(but i use hibernate to create database using springboot model with annotation @Table)
 
-Here is the SQL Satatements :
+##Here is the SQL Satatements :
 /*to create tables in sql statements*/
 
 CREATE TABLE Customer (
@@ -38,7 +38,7 @@ CREATE TABLE PaymentTransaction (
     FOREIGN KEY (merchantId) REFERENCES Merchant(id)
 );
 
-SQL Queries:
+##SQL Queries:
 
 /*Different queries in sql in the task*/
 /*a. To get the merchant with the highest turnover in 2022:*/
@@ -77,7 +77,7 @@ ORDER BY transaction_count DESC
 LIMIT 5;
 
 
-How I did for implementation :
+##Implementation Details :
 
 1. Spring Boot Project Setup
 Use Spring Initializer (https://start.spring.io/) to create a new project with:
@@ -107,7 +107,7 @@ For each entity,I define a repository interface
 
 GET http://localhost:8080/merchants/1
 
-Result in Postman:
+##Result in Postman:
 
 {
     "name": "Merchant One",
