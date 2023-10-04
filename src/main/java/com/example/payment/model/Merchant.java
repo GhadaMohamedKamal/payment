@@ -9,10 +9,10 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import lombok.Data;
+
 @Table
 @Entity
-@Data
+
 public class Merchant {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
