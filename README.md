@@ -38,6 +38,8 @@ When we use only SQL fo creating database:(but i use hibernate to create databas
     FOREIGN KEY (merchant_Id) REFERENCES Merchant(id)
 );
 ## Data Entry :/* Data entry for Customer table */
+SELECT m.id, m.name, SUM(pt.grossAmount) as turnover
+FROM Merchant m
 INSERT INTO Customer (name, email, date_Of_Registration) VALUES
 ('Ghada Mohd', 'ghadamohd@email.com', '2022-01-10'),
 ('Gabi Blanke', 'gabiblanke@email.com', '2022-02-12'),
