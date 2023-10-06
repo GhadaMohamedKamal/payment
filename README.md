@@ -75,7 +75,7 @@ ORDER BY turnover DESC
 LIMIT 1;
 
 ##  Test on Heidi Result :
-1,Me rchant One,450
+3,Merchant3,170.85
 
 
 ## /*b. To check whether the merchant with the highest turnover is still active:*/
@@ -111,8 +111,8 @@ ORDER BY transaction_count DESC
 LIMIT 5;
 
 ## Result:
-1,Ghada,6
-2,Mario,2
+1,Ghada Mohd,2
+2,Gabi Blanke,2
 
 ## Implementation Details :
 
