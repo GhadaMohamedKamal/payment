@@ -27,6 +27,8 @@ CREATE TABLE PaymentTransaction (
 
 /*Different quesries in sql in the task*/
 /*a. To get the merchant with the highest turnover in 2022:*/
+SELECT m.id, m.name, SUM(pt.grossAmount) as turnover
+FROM Merchant m
 JOIN Payment_Transaction pt ON m.id = pt.merchant_Id
 WHERE YEAR(pt.transaction_Date) = 2022
 GROUP BY m.id, m.name
