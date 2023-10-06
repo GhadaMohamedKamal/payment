@@ -4,7 +4,7 @@ CREATE TABLE Customer (
     id INT PRIMARY KEY AUTO_INCREMENT,
     name VARCHAR(255),
     email VARCHAR(255) UNIQUE,
-    dateOfRegistration DATE
+    date_Of_Registration DATE
 );
 
 CREATE TABLE Merchant (
@@ -15,19 +15,19 @@ CREATE TABLE Merchant (
 
 CREATE TABLE PaymentTransaction (
     id INT PRIMARY KEY AUTO_INCREMENT,
-    transactionDate DATE,
-    grossAmount DECIMAL(10, 2),
+    transaction_Date DATE,
+    gross_Amount DECIMAL(10, 2),
     VATRate ENUM('0%', '7%', '19%'),
     receiptId VARCHAR(255),
     customerId INT,
-    FOREIGN KEY (customerId) REFERENCES Customer(id),
-    merchantId INT,
-    FOREIGN KEY (merchantId) REFERENCES Merchant(id)
+    FOREIGN KEY (customer_Id) REFERENCES Customer(id),
+    merchant_Id INT,
+    FOREIGN KEY (merchant_Id) REFERENCES Merchant(id)
 );
 
 /*Different quesries in sql in the task*/
 /*a. To get the merchant with the highest turnover in 2022:*/
-SELECT m.id, m.name, SUM(pt.grossAmount) as turnover
+SELECT m.id, m.name, SUM(pt.gross_Amount) as turnover
 FROM Merchant m
 JOIN Payment_Transaction pt ON m.id = pt.merchant_Id
 WHERE YEAR(pt.transaction_Date) = 2022
