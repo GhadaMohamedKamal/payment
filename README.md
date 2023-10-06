@@ -37,6 +37,29 @@ When we use only SQL fo creating database:(but i use hibernate to create databas
     merchantId INT,
     FOREIGN KEY (merchantId) REFERENCES Merchant(id)
 );
+## Data Entry :/* Data entry for Customer table */
+INSERT INTO Customer (name, email, dateOfRegistration) VALUES
+('Ghada Mohd', 'ghadamohd@email.com', '2022-01-10'),
+('Gabi Blanke', 'gabiblanke@email.com', '2022-02-12'),
+('Mario Blanke', 'marioblanke@email.com', '2022-03-14');
+
+## /* Data entry for Merchant table */
+-- Using the previous merchants as no new merchants were provided
+INSERT INTO Merchant (name, active) VALUES
+('Merchant1', TRUE),
+('Merchant2', FALSE),
+('Merchant3', TRUE);
+
+## /* Data entry for PaymentTransaction table */
+-- Assuming Ghada Mohd made a transaction with Merchant1
+INSERT INTO PaymentTransaction (transactionDate, grossAmount, VATRate, receiptId, customerId, merchantId) VALUES
+('2022-04-01', 120.30, '7%', 'R20220401', 1, 1),  -- 1 is Ghada Mohd's ID, 1 is Merchant1's ID
+-- Assuming Gabi Blanke made a transaction with Merchant3
+('2022-04-15', 170.85, '19%', 'R20220415', 2, 3), -- 2 is Gabi Blanke's ID, 3 is Merchant3's ID
+-- Assuming Mario Blanke made two transactions; one with Merchant1 and one with Merchant2
+('2022-05-05', 45.00, '0%', 'R20220505A', 3, 1), -- 3 is Mario Blanke's ID, 1 is Merchant1's ID
+('2022-05-20', 95.50, '7%', 'R20220520B', 3, 2); -- 3 is Mario Blanke's ID, 2 is Merchant2's ID
+
 
 ## SQL Queries:
 ## all sql statements in a file SQL-Queries.sql ..After pull the project  Please delete from project files before run  
