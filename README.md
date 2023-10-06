@@ -17,7 +17,7 @@ When we use only SQL fo creating database:(but i use hibernate to create databas
     id INT PRIMARY KEY AUTO_INCREMENT,
     name VARCHAR(255),
     email VARCHAR(255) UNIQUE,
-    dateOfRegistration DATE
+    date_Of_Registration DATE
 );
 
 ## CREATE TABLE Merchant (
@@ -26,19 +26,19 @@ When we use only SQL fo creating database:(but i use hibernate to create databas
     active BOOLEAN
 );
 
-## CREATE TABLE PaymentTransaction (
+## CREATE TABLE Payment_Transaction (
     id INT PRIMARY KEY AUTO_INCREMENT,
-    transactionDate DATE,
-    grossAmount DECIMAL(10, 2),
+    transaction_Date_DATE,
+    gross_Amount DECIMAL(10, 2),
     VATRate ENUM('0%', '7%', '19%'),
     receiptId VARCHAR(255),
-    customerId INT,
-    FOREIGN KEY (customerId) REFERENCES Customer(id),
-    merchantId INT,
-    FOREIGN KEY (merchantId) REFERENCES Merchant(id)
+    customer_Id INT,
+    FOREIGN KEY (customer_Id) REFERENCES Customer(id),
+    merchant_Id INT,
+    FOREIGN KEY (merchant_Id) REFERENCES Merchant(id)
 );
 ## Data Entry :/* Data entry for Customer table */
-INSERT INTO Customer (name, email, dateOfRegistration) VALUES
+INSERT INTO Customer (name, email, date_Of_Registration) VALUES
 ('Ghada Mohd', 'ghadamohd@email.com', '2022-01-10'),
 ('Gabi Blanke', 'gabiblanke@email.com', '2022-02-12'),
 ('Mario Blanke', 'marioblanke@email.com', '2022-03-14');
@@ -50,9 +50,10 @@ INSERT INTO Merchant (name, active) VALUES
 ('Merchant2', FALSE),
 ('Merchant3', TRUE);
 
+
 ## /* Data entry for PaymentTransaction table */
 -- Assuming Ghada Mohd made a transaction with Merchant1
-INSERT INTO PaymentTransaction (transactionDate, grossAmount, VATRate, receiptId, customerId, merchantId) VALUES
+INSERT INTO Payment_Transaction (transaction_Date, gross_Amount, VATRate, receipt_Id, customer_Id, merchant_Id) VALUES
 ('2022-04-01', 120.30, '7%', 'R20220401', 1, 1),  -- 1 is Ghada Mohd's ID, 1 is Merchant1's ID
 -- Assuming Gabi Blanke made a transaction with Merchant3
 ('2022-04-15', 170.85, '19%', 'R20220415', 2, 3), -- 2 is Gabi Blanke's ID, 3 is Merchant3's ID
